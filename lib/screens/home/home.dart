@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:taxi_scooter/widgets/app_bar.dart';
+import 'package:taxi_scooter/widgets/custom_bottom_nav_bar.dart';
 
 
 class Home extends StatelessWidget {
@@ -7,7 +8,9 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: buildAppBar(context,  title:'test'),
+      appBar: buildAppBar(context,  title:'Home'),
+      bottomNavigationBar: CustomBottonNavBar(),
+
     );
   }
 }
