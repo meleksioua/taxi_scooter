@@ -23,7 +23,7 @@ AppBar buildAppBar(BuildContext context,
     centerTitle: true,
     actions: [
       IconButton(
-        icon: ClipOval(child: Image.asset("assets/images/profile.png")),
+        icon: ClipOval(child: Image.asset("assets/images/logo-jtard.png")),
         onPressed: () {},
       )
     ],
