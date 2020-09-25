@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:taxi_scooter/screens/home/home.dart';
 
+import 'screens/login/login.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -11,6 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -27,7 +30,7 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Home(),
+      home: LoginUI(),
     );
   }
 }
