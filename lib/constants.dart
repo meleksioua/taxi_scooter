@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+const jPrimaryColor = Color.fromRGBO(40,60,145,1);
+const jSecondColor = Color.fromRGBO(40, 170, 255, 1);
 
 const kPrimaryColor = Color(0xFF3E4067);
 const kTextColor = Color(0xFF3F4168);
@@ -14,6 +16,9 @@ const kRecovercolor = Color(0xFF36C12C);
 final kShadowColor = Color(0xFFB7B7B7).withOpacity(.16);
 final kActiveShadowColor = Color(0xFF4056C6).withOpacity(.15);
 const kDefaultPadding = 20.0;
+
+const kAlignRight = Alignment.topRight;
+const kAlignLeft = Alignment.topLeft;
 
 final kDefualtShadow = BoxShadow(
   offset: Offset(5, 5),

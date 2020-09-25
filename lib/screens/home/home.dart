@@ -10,7 +10,9 @@ class Home extends StatelessWidget {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: buildAppBar(context,  title:'Home'),
-      body: Body(),
+      body: SingleChildScrollView(
+          child: Body()
+      ),
       bottomNavigationBar: CustomBottonNavBar(),
 
     );
