@@ -5,7 +5,7 @@ import '../constants.dart';
 AppBar buildAppBar(BuildContext context,
     {bool isTransparent = false, String title}) {
   return AppBar(
-    backgroundColor: isTransparent ? Colors.transparent : Colors.black,
+    backgroundColor: isTransparent ? Colors.transparent : jPrimaryColor,
     elevation: 0,
     leading: IconButton(
       icon: Icon(

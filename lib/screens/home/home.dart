@@ -9,7 +9,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: buildAppBar(context,  title:'Home'),
+      appBar: buildAppBar(context, title:'Home'),
       body: SingleChildScrollView(
           child: Body()
       ),
