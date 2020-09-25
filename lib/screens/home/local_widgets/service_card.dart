@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:taxi_scooter/widgets/section_title.dart';
 
 import '../../../constants.dart';
@@ -17,22 +16,41 @@ class ServiceCard extends StatelessWidget {
       children: [
         VerticalSpacing(),
         SectionTitle(
-          title: "Right Now At Spark",
+          title: "Nos services",
           press: () {},
         ),
         VerticalSpacing(of: 20),
         SingleChildScrollView(
           clipBehavior: Clip.none,
-          scrollDirection: Axis.horizontal,
-          child: Row(
+          scrollDirection: Axis.vertical,
+          child: Column(
             children: [
-              SizedBox(height: 20),
 
               PreventCard(
                 text:
                 "Since the start of the coronavirus outbreak some places have fully embraced wearing facemasks",
                 image: "assets/images/profile.png",
+                title: "Taxi scooter",
+                  align: kAlignLeft,
+                pos: 130,
+              ),
+
+              PreventCard(
+                text:
+                "Since the start of the coronavirus outbreak some places have fully embraced wearing facemasks",
+                image: "assets/images/profile.png",
+                title: "Delivery scooter",
+                  align: kAlignRight,
+                pos:0
+              ),
+              PreventCard(
+                text:
+                "Since the start of the coronavirus outbreak some places have fully embraced wearing facemasks",
+                image: "assets/images/profile.png",
                 title: "Wash your hands",
+                  align: kAlignLeft,
+                  pos: 130,
+
               ),
 
               SizedBox(
@@ -51,82 +69,100 @@ class PreventCard extends StatelessWidget {
   final String image;
   final String title;
   final String text;
+  final  align;
+  final double pos;
   const PreventCard({
     Key key,
     this.image,
     this.title,
     this.text,
+    this.align,
+    this.pos
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
-      child: Card(
-        child: Container(
-          height: 136,
-          width: MediaQuery.of(context).size.width ,
-          child:FittedBox(
+      child: SizedBox(
+        height: 156,
+        child: Stack(
+          alignment: Alignment.centerLeft,
+          children: <Widget>[
+            Container(
+              height: 136,
+              width: MediaQuery.of(context).size.width - 20,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage(image),
+                    fit: BoxFit.contain,
+                    alignment: align
+                ),
+                borderRadius: BorderRadius.circular(20),
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    offset: Offset(0, 8),
+                    blurRadius: 24,
+                    color: kShadowColor,
+                  ),
+                ],
+              ),
+            ),
 
-
-
-
-          child: Row(
-            children: <Widget> [
-              Container(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-
+            Positioned(
+              left: pos,
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                height: 136,
+                width: MediaQuery.of(context).size.width - 170,
                   child: Column(
-                  children: [
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child:  Text(
+                    children: [
+
+
+                      Text(
                         title,
                         style: kTitleTextstyle.copyWith(
-                          fontSize: 25,
+                          fontSize: 16,
+
                         ),
 
                       ),
-                    ),
-                    Text(
-                      title,
-                      style: kTitleTextstyle.copyWith(
-                        fontSize: 25,
-                      ),
 
-                    ),
-                       Text(
+                      Text(
                         text,
-                        maxLines: 4,
+                        maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                          fontSize: 12,
+                          fontSize: 15,
                         ),
                       ),
-                  ],
-                )
+                      RaisedButton(
+                        color: jSecondColor,
+                        shape: StadiumBorder(),
+                        onPressed: () {
+                          /*...*/
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                              'Passer commande'
+                          ),
+                        )
+                      ),
 
-              ),
-              Container(
-                width: 250,
-                height: 250,
-                child: ClipRRect(
-                  borderRadius: new BorderRadius.circular(24.0),
-                  child: Image(
-                    fit: BoxFit.contain,
-                    alignment: Alignment.topRight,
-                    image: AssetImage(image),
-                  ),
-                ),
 
+                    ],
+                  )
               ),
-            ],
-          ),
-          ),
+            ),
+
+
+          ],
+
+
         ),
-
       ),
     );
-
   }
 }
