@@ -5,9 +5,13 @@ import 'package:flutter/material.dart';
 class CustomInputBox extends StatefulWidget {
 
   String inputHint;
+  Function validation;
+  TextInputType keyboardType;
 
   CustomInputBox({
-    this.inputHint
+    this.inputHint,
+    this.keyboardType,
+    this.validation
   });
 
   @override
@@ -28,6 +32,10 @@ class _CustomInputBoxState extends State<CustomInputBox> {
                 fontSize: 19,
                 color: Color(0xff0962ff),
                 fontWeight: FontWeight.bold),
+
+            keyboardType: widget.keyboardType,
+
+
             decoration: InputDecoration(
               filled: true,
               fillColor: Colors.white,
@@ -38,7 +46,7 @@ class _CustomInputBoxState extends State<CustomInputBox> {
                   color: Colors.grey[350],
                   fontWeight: FontWeight.w600),
               contentPadding:
-              EdgeInsets.symmetric(vertical: 20, horizontal: 25),
+              EdgeInsets.symmetric(vertical: 17, horizontal: 25),
               focusColor: Color(0xff0962ff),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(3),
@@ -52,6 +60,9 @@ class _CustomInputBoxState extends State<CustomInputBox> {
               ),
 
             ),
+
+
+            validator: widget.validation,
           ),
         ),
         //
