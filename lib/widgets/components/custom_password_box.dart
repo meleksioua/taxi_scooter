@@ -33,7 +33,7 @@ class _CustomPasswordBoxState extends State<CustomPasswordBox> {
                   color: Colors.grey[350],
                   fontWeight: FontWeight.w600),
               contentPadding:
-              EdgeInsets.symmetric(vertical: 20, horizontal: 25),
+              EdgeInsets.symmetric(vertical: 17, horizontal: 25),
               focusColor: Color(0xff0962ff),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(3),
@@ -58,6 +58,14 @@ class _CustomPasswordBoxState extends State<CustomPasswordBox> {
               )
             ),
             obscureText: !_showPassword,
+            keyboardType: TextInputType.visiblePassword,
+            validator: (value){
+                if(value.isEmpty){
+                    return "required";
+                }else{
+                  return null;
+                  }
+                },
           ),
         ),
         //

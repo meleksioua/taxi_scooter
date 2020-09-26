@@ -83,6 +83,13 @@ class LoginUI extends StatelessWidget {
 
                 CustomInputBox(
                   inputHint: 'Nom d\'utilisateur',
+                  validation: (value){
+                    if(value.isEmpty){
+                      return "required";
+                    }else{
+                      return null;
+                    }
+                  },
                 ),
 
                 CustomPasswordBox(),

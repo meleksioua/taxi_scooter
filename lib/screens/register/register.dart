@@ -16,11 +16,21 @@ class Register extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
+    GlobalKey<FormState> formkk = GlobalKey<FormState>();
+
+    void validate(){
+      if(formkk.currentState.validate()){
+        print("Validated");
+      }else{
+        print("Not Validated");
+      }
+    };
+
     return Scaffold(
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
         child: Stack(
-          children: [
+          children: <Widget>[
             Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -81,58 +91,89 @@ class Register extends StatelessWidget {
                   SizedBox(
                     height: 40,
                   ),
+                  Form(
+                    key: formkk,
+                    child: Column(
+                        children: <Widget>[
+                          CustomInputBox(
+                            inputHint: 'Nom',
+                            validation: (value){
+                              if(value.isEmpty){
+                                return "required";
+                              }else{
+                                return null;
+                              }
+                            },
+                          ),
 
-                  CustomInputBox(
-                    inputHint: 'Nom',
-                  ),
+                          CustomInputBox(
+                            inputHint: 'Email',
+                            keyboardType: TextInputType.emailAddress,
+                            validation: (value){
+                              if(value.isEmpty){
+                                return "required";
+                              }else{
+                                return null;
+                              }
+                            },
+                          ),
 
-                  CustomInputBox(
-                    inputHint: 'Email',
-                  ),
 
-                  CustomInputBox(
-                    inputHint: 'numéro mobile',
-                  ),
+                          CustomInputBox(
+                            inputHint: 'numéro mobile',
+                            keyboardType: TextInputType.phone,
+                            validation: (value){
+                              if(value.isEmpty){
+                                return "required";
+                              }else{
+                                return null;
+                              }
+                            },
+                          ),
 
-                  CustomInputBox(
-                    inputHint: 'Nom d\'utilisateur',
-                  ),
+                          CustomInputBox(
+                            inputHint: 'Nom d\'utilisateur',
+                            validation: (value){
+                              if(value.isEmpty){
+                                return "required";
+                              }else{
+                                return null;
+                              }
+                            },
+                          ),
 
-                  CustomPasswordBox(),
+                          CustomPasswordBox(),
 
-                  SizedBox(
-                    height: 3,
-                  ),
+                          SizedBox(
+                            height: 3,
+                          ),
 
-                  Text(
-                    'En cliquant sur S\'inscrire, vous acceptez \nnos terms et conditions sans réservation.',
-                    style: TextStyle(
-                      fontFamily: 'Product Sans',
-                      fontSize: 15.5,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.grey,
+                          Text(
+                            'En cliquant sur S\'inscrire, vous acceptez \nnos terms et conditions sans réservation.',
+                            style: TextStyle(
+                              fontFamily: 'Product Sans',
+                              fontSize: 15.5,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.grey,
+                            ),
+                          ),
+
+                          SizedBox(
+                            height: 20,
+                          ),
+
+                          CustomButton(
+                            label: 'S\'INSCRIRE',
+                            labelColor: Colors.white,
+                            color: Color(0xff0962ff),
+                            press: (){
+                              validate();
+                            } ,
+                          ),
+                        ]
                     ),
                   ),
 
-                  SizedBox(
-                    height: 20,
-                  ),
-
-                  CustomButton(
-                    label: 'S\'INSCRIRE',
-                    labelColor: Colors.white,
-                    color: Color(0xff0962ff),
-                    press: (){
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context){
-                            return Home();
-                          },
-                        ),
-                      );
-                    } ,
-                  ),
 
                   SizedBox(
                     height: 20,
