@@ -1,6 +1,6 @@
 # taxi_scooter
 
-A taxi scooter application for a new startup.
+Application for a new startup.
 
 ## Getting Started
 
